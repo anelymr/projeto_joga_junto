@@ -1,0 +1,23 @@
+***Array***
+Em Python, não há uma estrutura de dados chamada "array" no sentido tradicional.
+Em vez disso, você usa listas para criar uma coleção de elementos.
+   
+***Listas***
+ Uma lista em Python é uma coleção ordenada e mutável de elementos. Ela pode conter qualquer tipo de dado, incluindo números, strings, objetos, outras listas, etc.
+Listas são definidas usando colchetes [] e os elementos são separados por vírgulas. Como por exemplo: "minha_lista = [1, 2, 3, 4, 5]"
+
+***Tuplas***
+Semelhantes às listas, as tuplas são coleções ordenadas de elementos, mas são imutáveis, ou seja, seus elementos não podem ser alterados após a criação.
+Tuplas são definidas usando parênteses ().
+
+***Dicionários***
+Dicionários em Python são estruturas de dados que armazenam pares chave-valor, onde cada chave é única.
+Eles são definidos usando chaves {} e são eficientes para mapear informações.
+
+***Sets***
+Sets em Python são coleções não ordenadas de elementos únicos.
+Eles são definidos usando chaves {} ou a função set() e são usados para eliminar duplicatas e verificar a existência de elementos em uma coleção.
+
+***Index***
+Em Python, os índices são usados para acessar elementos em listas, tuplas e strings.
+Os índices geralmente começam em 0 e permitem acessar elementos específicos da coleção, usando colchetes [].
