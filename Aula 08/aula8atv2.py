@@ -11,10 +11,14 @@ Caso o número de matrícula do(a) aluno(a) seja impar imprima:
 #criando a função
 def verificar_matricula(nro_matricula):
     if nro_matricula % 2 == 0:
-        return "azul"
+        return "VOCÊ ESTÁ NO TIME AZUL"
     else:
-        return "amarelo"
+        return "VOCÊ ESTÁ NO TIME AMARELO"
 
+aluno = verificar_matricula(12)
+print(aluno)
+
+"""
 #pedir para o usuário inserir o nro de matricula
 nro_matricula = int(input("Digite o nro da matricula: "))
 
@@ -23,6 +27,7 @@ grupo = verificar_matricula(nro_matricula)
 
 #Retorna o resultado no terminal
 if grupo == "azul":
-    print("VOCÊ ESTÁ NO TIME AZUL")
+    print("L")
 else:
-    print("VOCÊ ESTÁ NO TIME AMARELO")
+    print("")
+"""
