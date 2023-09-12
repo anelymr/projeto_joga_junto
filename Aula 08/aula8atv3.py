@@ -7,4 +7,14 @@ Criem um scritp para:
 
 from aula8atv2 import verificar_matricula
 
-print(verificar_matricula)
+#criando uma lista
+nro_matricula = []
+
+#solicitando ao usuario o numero
+while len(nro_matricula) < 5:
+    nro = int(input(f"Digite os numeros de matricula: "))
+    nro_matricula.append(nro)
+
+for nro in nro_matricula:
+    grupo = verificar_matricula(nro)
+    print(f"Sua matricula é: {nro} e você está no grupo: {grupo}")

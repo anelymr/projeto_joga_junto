@@ -15,8 +15,8 @@ def verificar_matricula(nro_matricula):
     else:
         return "VOCÊ ESTÁ NO TIME AMARELO"
 
-aluno = verificar_matricula(12)
-print(aluno)
+#aluno = verificar_matricula(12)
+#print(aluno)
 
 """
 #pedir para o usuário inserir o nro de matricula
