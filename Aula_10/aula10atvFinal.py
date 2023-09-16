@@ -26,7 +26,7 @@ novo_autor_nome = input("Digite o nome do novo autor: ").lower()
 autores = authors_lista()
 
 # VERIFICA SE O AUTOR JÁ EXISTE NA LISTA
-autor_existente = next((autor for autor in autores if autor["name"] == novo_autor_nome), None)
+autor_existente = next((autor for autor in autores if autor["name"].lower() == novo_autor_nome), None)
 
 if autor_existente:
     print(f"Autor já existe. ID: {autor_existente['id']}, Nome: {autor_existente['name']}")
@@ -75,3 +75,47 @@ else:
         print(f"Gênero cadastrado com sucesso. ID: {genero_cadastrado['id']}, Nome: {genero_cadastrado['name']}")
     else:
         print(f"Gênero não encontrado.")
+
+#***************** LIVROS ******************
+# FUNÇÃO PARA CONSULTAR O ID DE GÊNERO DOS LIVROS
+def books_lista():
+    url = f"http://apilivro.jogajuntoinstituto.org/books/"
+    response = requests.get(url)
+    return response.json()
+
+# FUNÇÃO PARA CADASTRAR A LISTA DE GÊNEROS
+def books_cadastro(nome_livro, descricao,id_author, id_genero):
+    url = f"http://apilivro.jogajuntoinstituto.org/books/"
+    data = {
+        "title": nome_livro,
+        "description": descricao,
+        "author": id_author,
+        "gender": id_genero,
+    }
+    response = requests.post(url, json=data)
+    if response.status_code == 201:
+        print(f"O Livro: '{novo_livro_cadastro}' foi cadastrado com sucesso")
+    else:
+        print(f"Erro ao cadastrar o Livro. Motivo: {response.status_code} - {response.text}")
+    return response.json()
+
+# INFORME QUAL LIVRO VOCÊ DESEJA CADASTRAR
+novo_livro_cadastro = input("Digite o nome do livro que você deseja cadastrar: ").lower()
+novo_livro_descricao = input("Digite a descrição do livro: ").lower()
+autor_livro = int(input("Digite o ID do autor: "))
+genero_livro = int(input("Digite o ID do genero: "))
+
+# LISTA ATUAL DOS LIVROS
+livros = books_lista()
+
+# VERIFICA SE O LIVRO JÁ EXISTE NA LISTA
+livro_existente = next((livro for livro in livros if livro["title"].lower() == novo_livro_cadastro), None)
+
+if livro_existente:
+    print(f"Livro já existe. ID: {livro_existente['id']}, Nome: {livro_existente['title']}")
+else:
+    livro_cadastrado = books_cadastro(novo_livro_cadastro, novo_livro_descricao,autor_livro,genero_livro)
+    if "id" in livro_cadastrado and "title" in livro_cadastrado:
+        print(f"Livro cadastrado com sucesso. ID: {livro_cadastrado['id']}, Nome: {livro_cadastrado['title']}")
+    else:
+        print(f"Livro não encontrado.")
