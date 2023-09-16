@@ -1,5 +1,6 @@
 import requests
 
+#***************** AUTORES ******************
 #FUNÇÃO PARA LISTAR OS AUTORES
 def authors_lista():
     url = f"http://apilivro.jogajuntoinstituto.org/authors/"
@@ -37,6 +38,7 @@ else:
     else:
         print(f"Autor não encontrado.")
 
+#***************** GÊNERO ******************
 # FUNÇÃO PARA CONSULTAR O ID DE GÊNERO DOS LIVROS
 def genders_lista():
     url = f"http://apilivro.jogajuntoinstituto.org/genders/"
