@@ -14,10 +14,6 @@ def authors_cadastro(nome_autor):
         "name": nome_autor
     }
     response = requests.post(url, json=data)
-    if response.status_code == 200:
-        print(f"O Autor: '{nome_autor}' foi cadastrado com sucesso")
-    else:
-        print(f"Erro ao cadastraro o autor. Motivo: {response.status_code} - {response.text}")
     return response.json()
 
 # CADASTRA NOVO AUTOR
@@ -31,12 +27,15 @@ autor_existente = next((autor for autor in autores if autor["name"].lower() == n
 
 if autor_existente:
     print(f"Autor já existe. ID: {autor_existente['id']}, Nome: {autor_existente['name']}")
+    print(f" ")
 else:
     autor_existente = authors_cadastro(novo_autor_nome)
     if "id" in autor_existente and "name" in autor_existente:
-        print(f"Autor cadastrado com sucesso. ID: {autor_existente['id']}, Nome: {autor_existente['name']}")
+        print(f"ID: {autor_existente['id']}, Nome: {autor_existente['name']}")
+        print(f" ")
     else:
         print(f"Autor não encontrado.")
+        print(f" ")
 
 #***************** GÊNERO ******************
 # FUNÇÃO PARA CONSULTAR O ID DE GÊNERO DOS LIVROS
@@ -53,10 +52,6 @@ def genders_cadastro(genero_desejado, nro_squad):
         "squad": nro_squad
     }
     response = requests.post(url, json=data)
-    if response.status_code == 201:
-        print(f"O Gênero: '{genero_desejado}' foi cadastrado com sucesso")
-    else:
-        print(f"Erro ao cadastrar o gênero. Motivo: {response.status_code} - {response.text}")
     return response.json()
 
 # INFORME QUAL GÊNERO VOCÊ DESEJA DESCOBRIR O ID
@@ -71,10 +66,12 @@ genero_existente = next((genero for genero in generos if genero["name"].lower() 
 
 if genero_existente:
     print(f"Gênero já existe. ID: {genero_existente['id']}, Nome: {genero_existente['name']}")
+    print(f" ")
 else:
     genero_cadastrado = genders_cadastro(genero_desejado, nro_squad)
     if "id" in genero_cadastrado and "name" in genero_cadastrado:
         print(f"Gênero cadastrado com sucesso. ID: {genero_cadastrado['id']}, Nome: {genero_cadastrado['name']}")
+        print(f" ")
     else:
         print(f"Gênero não encontrado.")
 
@@ -86,7 +83,7 @@ def books_lista():
     return response.json()
 
 # FUNÇÃO PARA CADASTRAR A LISTA DE GÊNEROS
-def books_cadastro(nome_livro, descricao,id_author, id_genero):
+def books_cadastro(nome_livro, descricao, id_author, id_genero):
     url = f"http://apilivro.jogajuntoinstituto.org/books/"
     data = {
         "title": nome_livro,
@@ -95,10 +92,6 @@ def books_cadastro(nome_livro, descricao,id_author, id_genero):
         "gender": id_genero,
     }
     response = requests.post(url, json=data)
-    if response.status_code == 201:
-        print(f"O Livro: '{novo_livro_cadastro}' foi cadastrado com sucesso")
-    else:
-        print(f"Erro ao cadastrar o Livro. Motivo: {response.status_code} - {response.text}")
     return response.json()
 
 # INFORME QUAL LIVRO VOCÊ DESEJA CADASTRAR
@@ -114,10 +107,12 @@ livros = books_lista()
 livro_existente = next((livro for livro in livros if livro["title"].lower() == novo_livro_cadastro), None)
 
 if livro_existente:
-    print(f"Livro já existe. ID: {livro_existente['id']}, Nome: {livro_existente['title']}")
+    print(f"Livro já existe. Nome: {livro_existente['title']}") #ID: {livro_existente['id']},
+    print(f" ")
 else:
-    livro_cadastrado = books_cadastro(novo_livro_cadastro, novo_livro_descricao,autor_livro,genero_livro)
+    livro_cadastrado = books_cadastro(novo_livro_cadastro, novo_livro_descricao, autor_livro, genero_livro)
     if "id" in livro_cadastrado and "title" in livro_cadastrado:
         print(f"Livro cadastrado com sucesso. ID: {livro_cadastrado['id']}, Nome: {livro_cadastrado['title']}")
+        print(f" ")
     else:
         print(f"Livro não encontrado.")
