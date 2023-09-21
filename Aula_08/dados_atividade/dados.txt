@@ -1,3 +1,0 @@
-['dado 1', 'dado 2', 'dado 3']
-['dado 1', 'dado 2', 'dado 3']
-['dado 1', 'dado 2', 'dado 3']
